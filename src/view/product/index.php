@@ -1,7 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
+use Infrastructure\Controllers\ProductContoller;
+
 include_once("/xampp/htdocs/covers-for-cell/src/view/layouts/header.php");
+include_once("/xampp/htdocs/covers-for-cell/src/Infrastructure/Controllers/ProductContoller.php");
+
+$controller = new ProductContoller();
+$dataOfAllProducts = $controller->readAllProducts();
 
 ?>
 
@@ -22,24 +29,26 @@ include_once("/xampp/htdocs/covers-for-cell/src/view/layouts/header.php");
         </tr>
     </thead>
     <tbody>
-        
+        <?php if($dataOfAllProducts): ?>
+            <?php foreach ($dataOfAllProducts as $product) { ?>
                 <tr>
-                    <td scope="row">3032</td>
-                    <td>Cover iPhone</td>
-                    <td>30</td>
-                    <td>true</td>
+                    <td scope="row"><?= $product->getId() ?></td>
+                    <td><?= $product->getName() ?></td>
+                    <td><?= $product->getPrice() ?></td>
+                    <td><?= $product->getActive() ?></td>
                     <td>
-                        <a class="btn btn-success" >UPDATE</a>
-                        <a class="btn btn-danger" >DELETE</a>
+                        <a class="btn btn-success">UPDATE</a>
+                        <a class="btn btn-danger">DELETE</a>
                     </td>
                 </tr>
-      
+            <?php } ?>
+        <?php else: ?>
             <tr>
                 <td colspan="5" class="text-center text-danger"><strong>
-                        <h2>NO CASE COVER</h2>
-                    </strong></td>
+                    <h2>NO CASE COVER</h2>
+                </strong></td>
             </tr>
-        
+        <?php endif; ?>
     </tbody>
 </table>
 
