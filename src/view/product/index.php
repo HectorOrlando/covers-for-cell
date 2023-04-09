@@ -12,8 +12,14 @@ $dataOfAllProducts = $controller->readAllProducts();
 
 /* DELETE */
 $idForDelete = 15;
-var_dump("delete product id:  $idForDelete ");
+var_dump("<hr><br>delete product id:  $idForDelete ");
 $controller->deleteProductById($idForDelete);
+
+/* SEARCH FOR ID */
+$showId = 2;
+var_dump("<hr>SEARCH FOR ID: $showId <br>");
+var_dump($controller->getProductById($showId));
+var_dump('<hr>');
 
 
 ?>
