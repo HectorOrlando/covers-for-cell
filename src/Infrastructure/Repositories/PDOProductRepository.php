@@ -39,4 +39,10 @@ class PDOProductRepository implements ProductRepository
         }
         return $products;
     }
+
+    public function deleteProductById($id): void
+    {
+        $sql = "DELETE FROM product WHERE id = $id";
+        $this->PDO->query($sql);
+    }
 }

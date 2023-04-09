@@ -6,9 +6,11 @@ namespace Infrastructure\Controllers;
 
 use Infrastructure\Repository\PDOProductRepository;
 use Aplication\ReadAllProducts;
+use Aplication\DeleteProductById;
 
 require_once("/xampp/htdocs/covers-for-cell/src/Infrastructure/Repositories/PDOProductRepository.php");
 require_once("/xampp/htdocs/covers-for-cell/src/Aplication/ReadAllProducts.php");
+require_once("/xampp/htdocs/covers-for-cell/src/Aplication/DeleteProductById.php");
 
 class ProductContoller
 {
@@ -23,5 +25,11 @@ class ProductContoller
     {
         $readService = new ReadAllProducts($this->productRepository);
         return $readService->getAllProducts();
+    }
+
+    public function deleteProductById($id): void
+    {
+        $readService = new DeleteProductById($this->productRepository);
+        $readService->deleteProductById($id);
     }
 }

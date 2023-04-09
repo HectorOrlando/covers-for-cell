@@ -10,6 +10,12 @@ include_once("/xampp/htdocs/covers-for-cell/src/Infrastructure/Controllers/Produ
 $controller = new ProductContoller();
 $dataOfAllProducts = $controller->readAllProducts();
 
+/* DELETE */
+$idForDelete = 15;
+var_dump("delete product id:  $idForDelete ");
+$controller->deleteProductById($idForDelete);
+
+
 ?>
 
 
@@ -29,7 +35,7 @@ $dataOfAllProducts = $controller->readAllProducts();
         </tr>
     </thead>
     <tbody>
-        <?php if($dataOfAllProducts): ?>
+        <?php if ($dataOfAllProducts) : ?>
             <?php foreach ($dataOfAllProducts as $product) { ?>
                 <tr>
                     <td scope="row"><?= $product->getId() ?></td>
@@ -42,11 +48,11 @@ $dataOfAllProducts = $controller->readAllProducts();
                     </td>
                 </tr>
             <?php } ?>
-        <?php else: ?>
+        <?php else : ?>
             <tr>
                 <td colspan="5" class="text-center text-danger"><strong>
-                    <h2>NO CASE COVER</h2>
-                </strong></td>
+                        <h2>NO CASE COVER</h2>
+                    </strong></td>
             </tr>
         <?php endif; ?>
     </tbody>
